@@ -1,0 +1,144 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    
+        <div class="button-container">
+           
+            <button class="About-button" onclick="window.location.href='https://geniustobi.github.io/chiragportfolio.github.io/'">About Me</button>
+        </div>
+        <div class="contact-info">
+            <strong>- - - - - - - - - - - Contact Us - - - - - - - - - - -</strong>
+            <ul>
+                
+                <li><strong>Name:</strong> KBP COLLEGE</li>
+                <li><strong>Email:</strong> KBP@gmail.com</li>
+                <li><strong>Phone:</strong> +91 9653436999</li>
+                <li><strong>Address:</strong> Vasshi, Navi Mumbai, India</li>
+            </ul>
+        </div>
+    
+    
+    <section id ="form-container">
+        <img id="logo"   src="{% static 'D:\django_practicals\chiragproject\chiragvideochat\videoproject\static\images\lobby.png' %}" />
+        
+        <div id = "welcome-message"> 
+            <h1> VISUAL VERSE ! </h1>
+            <p>A video calling application </p>
+        </div>
+
+
+        <form id="form">
+            <div class="form-field">
+                <input type="text" name="room" placeholder="Enter a Room name..." style = 'text-transform: uppercase;' />
+
+            </div>
+
+            <div class="form-field">
+                <input type="text" name="username" placeholder="Enter a your name..." style = 'text-transform: uppercase;' />
+
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Get Started" />
+                <div id="generated-password-container"></div>
+                
+
+            </div>
+            
+
+        
+        
+        </form>
+        <!-- code for room name generation -->
+
+<!-- Add this button to your existing HTML where you want the password generation functionality -->
+<button id="generate-password-button">Generate Room Name</button>
+<!--button id="copy-password-button" onclick="">Copy Room Name</button -->
+<!-- Add a container to display the generated password -->
+
+
+<script>
+  // JavaScript function to copy the generated name to clipboard
+  /*function copyPassword() {
+    // Select the text of the generated password
+    var password = document.getElementById('generated-password-container').innerText;
+
+    // Create a temporary textarea element to hold the password text
+    var tempTextArea = document.createElement('textarea');
+    tempTextArea.value = password;
+
+    // Append the textarea to the document body
+    document.body.appendChild(tempTextArea);
+
+    // Select the text inside the textarea
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the selected text to clipboard
+    document.execCommand('copy');
+
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextArea);
+
+    // Show an alert to indicate that the password has been copied
+    alert('Room Name copied to clipboard!');
+}
+*/
+
+// JavaScript code to handle the generate button click event
+document.getElementById('generate-password-button').addEventListener('click', function() {
+    // Make an AJAX request to your Django backend to generate the password
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Display the generated password in the container
+                document.getElementById('generated-password-container').innerText = xhr.responseText;
+            } else {
+                console.error('Error:', xhr.status);
+            }
+        }
+    };
+    xhr.open('POST', '/generate_password/', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
+});
+</script>
+
+
+
+</main>
+
+
+
+<script type="text/javascript">
+    let form = document.getElementById('form')
+    
+    let handleSubmit = async (e)=> {
+        e.preventDefault()
+        let room = e.target.room.value.toUpperCase()
+        let name = e.target.username.value
+        let response = await fetch(`/get_token/?channel=${room}`)
+        let data = await response.json()
+
+        let UID = data.uid
+        let token = data.token
+
+        sessionStorage.setItem('UID',UID)
+        sessionStorage.setItem('token',token)
+        sessionStorage.setItem('room',room)
+        sessionStorage.setItem('name',name)
+
+        window.open('/room/','_self')
+
+    }
+    form.addEventListener('submit',handleSubmit)
+
+    
+    
+
+</script>
+
+{% endblock content %}
+

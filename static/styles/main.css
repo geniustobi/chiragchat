@@ -1,0 +1,274 @@
+:root{
+    --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+    
+}
+
+body{
+
+    background-color: rgb(164, 169, 169);
+}
+
+/*......Lobby Styling.......*/
+
+
+
+
+#logo{
+
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+/*......Contact us Styling.......*/
+
+.button-container{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+
+
+}
+
+.contact-info{
+    position: fixed;
+            bottom: 10px; 
+            left: 10px;
+            background-color: #d6e7f8;
+            color: #0c0c0c;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.About-button {
+    background-color: #d6e7f8;
+    color: #0c0c0c;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*......generate Styling.......*/
+#generate-password-button {
+    background-color: rgb(13, 241, 203);
+    border:none;
+    color:#0b0b0b;
+    padding: 10px 30px;
+    text-align: center;
+    
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 140px;
+    cursor: pointer;
+  }
+  
+  #generate-password-button:hover {
+    background-color: #04a4ee;
+  }
+  
+  #generate-password-button:active {
+    background-color: #08f4ec;
+    transform: translateY(2px);
+  }
+
+/*......Copy name Styling.......*/
+ /* #copy-password-button {
+    background-color: rgb(13, 241, 203);
+    border:none;
+    color:#0b0b0b;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  #copy-password-button:hover {
+    background-color: #04a4ee;
+  }
+  
+  #copy-password-button:active {
+    background-color: #08f4ec;
+    transform: translateY(2px);
+  }
+  */
+  
+
+/*......show name Styling.......*/
+  #generated-password-container {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+  }
+  
+  #generated-password-container:hover {
+    background-color: #e6e6e6;
+  }
+
+
+
+/*......Form Styling.......*/
+
+#form-container{
+    width: 450px;
+    box-shadow:var(--shadow);
+    background-color: #d6e7f8;
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#welcome-message{
+    text-align: center;
+    margin: 20px;
+
+}
+
+#welcome-message h1{
+    font-size: 36px;
+}
+
+#welcome-message p{
+    font-size: 16px;
+}
+
+.form-field{
+    margin: 20px;
+}
+
+.form-field label{
+    font-size: 16px;
+    line-height: 1.7em;
+}
+
+.form-field input{
+    width: 100%;
+    border: 2px solid rgba(198, 202, 219, 1);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-field input[type ='submit']{
+    background-color: rgb(13, 241, 203);
+    border:none;
+    color:#0b0b0b;
+    cursor: pointer;
+
+}
+
+
+@media screen and (max-width: 450px){
+    #form-container{
+        width :95%;
+    }
+    #welcome-message h1{
+        font-size: 24px;
+    }
+
+}
+    
+
+
+
+
+/*..room styling...*/
+
+#room-name-wrapper{
+    text-align:center;
+    font-size: 18px;
+
+}
+
+#video-streams{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85vh;
+    width: 75%;
+    margin: 0 auto;
+
+
+}
+
+
+.video-container{
+    flex-basis: 500px;
+    flex-grow: 1;
+    max-height: 100%;
+    min-height: 350px;
+    border: 1px solid rgb(172, 222, 241);
+    margin: 2px;
+    border-radius: 5px;
+    background-color: rgb(94, 214, 241);
+    position: relative;
+}
+
+.video-player{
+
+    height: 100%;
+    width: 100%;
+}
+
+.video-player > *{
+    border-radius: 5px;
+}
+
+
+.username-wrapper{
+    position:absolute;
+    top : 10px;
+    left: 10px;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color:#fff;
+}
+
+@media screen and (max-width :1650px) {
+    .video-container{
+        flex-basis: 300px;
+        min-height: 200px;
+    }
+    
+}
+
+
+/* .... room styling - controls ....*/
+
+#controls-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 1em;
+    position: fixed;
+    bottom: 20px;
+}
+
+.control-icon{
+    height: 20px;
+    width: 20px;
+    box-shadow: var(--shadow);
+    background-color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#leave-btn{
+    background-color: rgb(255, 80, 80, 1);
+}
